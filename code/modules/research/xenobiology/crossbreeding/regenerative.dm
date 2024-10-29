@@ -71,12 +71,11 @@ Regenerative extracts:
 	effect_desc = "Fully heals the target and encases the target in a locker."
 
 /obj/item/slimecross/regenerative/metal/core_effect(mob/living/target, mob/user)
-	target.visible_message(span_warning("The milky goo hardens and reshapes itself, encasing [target]!"))
 	var/obj/structure/closet/slimecloset = new /obj/structure/closet(target.loc)
 	slimecloset.name = "slimy closet"
 	slimecloset.desc = "Looking closer, it seems to be made of a sort of solid, opaque, metal-like goo."
 	if(!slimecloset.insert(target)) // prevents shenanigans e.g. capturing too-large mobs (megafauna)
-		target.visible_message(span_warning("The milky goo hardens and reshapes itself, but catastrophically fails to encase [target], breaking [slimecloset] open!"))
+		slimecloset.visible_message(span_warning("The milky goo hardens and reshapes itself, but catastrophically fails to encase [target], breaking [slimecloset] open!"))
 		slimecloset.bust_open()
 		slimecloset.take_damage(slimecloset.max_integrity * 0.75)
 		slimecloset.desc += " It looks like it didn't solidify correctly, though."
