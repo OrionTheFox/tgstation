@@ -72,14 +72,17 @@ Regenerative extracts:
 
 /obj/item/slimecross/regenerative/metal/core_effect(mob/living/target, mob/user)
 	target.visible_message(span_warning("The milky goo hardens and reshapes itself, encasing [target]!"))
-	var/obj/structure/closet/C = new /obj/structure/closet(target.loc)
-	C.name = "slimy closet"
-	C.desc = "Looking closer, it seems to be made of a sort of solid, opaque, metal-like goo."
-	if(target.mob_size > C.max_mob_size) //Prevents capturing megafauna or other large mobs in the closets
-		C.bust_open()
-		C.visible_message(span_warning("[target] is too big, and immediately breaks \the [C.name] open!"))
-	else //This can't be allowed to actually happen to the too-big mobs or it breaks some actions
-		target.forceMove(C)
+	var/obj/structure/closet/slimecloset = new /obj/structure/closet(target.loc)
+	slimecloset.name = "slimy closet"
+	slimecloset.desc = "Looking closer, it seems to be made of a sort of solid, opaque, metal-like goo."
+	if(!slimecloset.insert(target)) // prevents shenanigans e.g. capturing too-large mobs (megafauna)
+		target.visible_message(span_warning("The milky goo hardens and reshapes itself, but catastrophically fails to encase [target], breaking [slimecloset] open!"))
+		slimecloset.bust_open()
+		slimecloset.take_damage(slimecloset.max_integrity * 0.75)
+		slimecloset.desc += " It looks like it didn't solidify correctly, though."
+		return
+	slimecloset.visible_message(span_warning("The milky goo hardens and reshapes itself, encasing [target]!"))
+
 
 /obj/item/slimecross/regenerative/yellow
 	colour = SLIME_TYPE_YELLOW
@@ -151,12 +154,12 @@ Regenerative extracts:
 
 /obj/item/slimecross/regenerative/bluespace/core_effect(mob/living/target, mob/user)
 	var/turf/old_location = get_turf(target)
-	if(do_teleport(target, T, channel = TELEPORT_CHANNEL_QUANTUM)) //despite being named a bluespace teleportation method the quantum channel is used to preserve precision teleporting with a bag of holding
-		old_location.visible_message(span_warning("[target] disappears in a shower of sparks!"))
-		to_chat(target, span_danger("The milky goo teleports you somewhere it remembers!"))
-
-	if(HAS_TRAIT(target, TRAIT_NO_TELEPORT))
-		old_location.visible_message(span_warning("[target] sparks briefly, but is prevented from teleporting!"))
+	if(!do_teleport(target, T, channel = TELEPORT_CHANNEL_QUANTUM)) //despite being named a bluespace teleportation method the quantum channel is used to preserve precision teleporting with a bag of holding
+		// teleport failed due to reasons e.g. teleport blocker implant
+		target.visible_message(span_warning("[target] sparks briefly, but is prevented from teleporting!"))
+		return
+	old_location.visible_message(span_warning("[target] disappears in a shower of sparks!"))
+	to_chat(target, span_danger("The milky goo teleports you somewhere it remembers!"))
 
 /obj/item/slimecross/regenerative/bluespace/Initialize(mapload)
 	. = ..()
