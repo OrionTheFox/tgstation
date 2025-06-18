@@ -5,7 +5,7 @@
 	icon_state = "broadcast receiver"
 
 /obj/structure/fluff/commsbuoy_processor
-	name = "comms buoy processor unit"
+	name = "interstellar processor unit"
 	desc = "This machine is used to process and unscramble interstellar transmissions, to then be relayed and broadcast."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "processor"

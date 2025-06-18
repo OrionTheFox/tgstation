@@ -250,7 +250,7 @@
 	prototypes, stripping what they need and leaving the husk to drift. While efficient for business, this does have the unfortunate side effect of giving \
 	criminal elements plenty of locations to choose from for bases, hideouts, or simply pitstops. \
 	This particular one, a long-abandoned AI project, has had guests in the form of a Syndicate team that doesn't know the saying 'leave it better than you \
-	found it', their tragedy-prone hostages, and several fairly fast moving rocks.
+	found it', their tragedy-prone hostages, and several fairly fast moving rocks."
 
 /datum/map_template/ruin/space/oldteleporter
 	id = "oldteleporter"

@@ -61,6 +61,9 @@
 	icon_state = "robot_old"
 	density = FALSE
 
+/obj/structure/showcase/cyborg/old/unanchored
+	anchored = FALSE
+
 /obj/structure/showcase/mecha/marauder
 	name = "combat mech exhibit"
 	desc = "A stand with an empty old Nanotrasen Corporation combat mech bolted to it. It is described as the premier unit used to defend corporate interests and employees."
