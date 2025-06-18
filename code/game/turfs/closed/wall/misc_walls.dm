@@ -127,6 +127,15 @@
 /turf/closed/wall/material/meat/airless
 	baseturfs = /turf/open/floor/material/meat/airless
 
+/turf/closed/wall/material/plastic
+	name = "plastic wall"
+	girder_type = null
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+
+/turf/closed/wall/material/plastic/Initialize(mapload)
+	. = ..()
+	set_custom_materials(list(GET_MATERIAL_REF(/datum/material/plastic) = SHEET_MATERIAL_AMOUNT))
+
 /turf/closed/wall/tomb
 	name = "tomb wall"
 	desc = "The carved surface of a dusty tomb. It's not clear who built this."
