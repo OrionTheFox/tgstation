@@ -4809,6 +4809,7 @@
 #include "code\modules\mapfluff\ruins\spaceruin_code\listeningstation.dm"
 #include "code\modules\mapfluff\ruins\spaceruin_code\meatderelict.dm"
 #include "code\modules\mapfluff\ruins\spaceruin_code\meateor.dm"
+#include "code\modules\mapfluff\ruins\spaceruin_code\oldaisat.dm"
 #include "code\modules\mapfluff\ruins\spaceruin_code\originalcontent.dm"
 #include "code\modules\mapfluff\ruins\spaceruin_code\spacehotel.dm"
 #include "code\modules\mapfluff\ruins\spaceruin_code\the_Outlet.dm"

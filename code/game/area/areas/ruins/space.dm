@@ -548,14 +548,6 @@
 	name = "\improper Abandoned Teleporter"
 	ambientsounds = list('sound/ambience/misc/ambimalf.ogg', 'sound/ambience/misc/signal.ogg')
 
-//OLD AI SAT
-
-/area/ruin/space/tcommsat_oldaisat // Since tcommsat was moved to /area/station/, this turf doesn't inhereit its properties anymore
-	name = "\improper Abandoned Satellite"
-	ambientsounds = list('sound/ambience/engineering/ambisin2.ogg', 'sound/ambience/misc/signal.ogg', 'sound/ambience/misc/signal.ogg', 'sound/ambience/general/ambigen9.ogg', 'sound/ambience/engineering/ambitech.ogg',\
-											'sound/ambience/engineering/ambitech2.ogg', 'sound/ambience/engineering/ambitech3.ogg', 'sound/ambience/misc/ambimystery.ogg')
-	airlock_wires = /datum/wires/airlock/engineering
-
 // CRASHED PRISON SHUTTLE
 /area/ruin/space/prison_shuttle
 	name = "\improper Crashed Prisoner Shuttle"
